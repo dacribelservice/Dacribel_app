@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary-fixed-dim": "#f7be34",
+                        "on-primary-fixed-variant": "#5c4300",
+                        "surface-variant": "#33343d",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "on-primary-container": "#674b00",
+                        "secondary-fixed": "#dfe0fe",
+                        "secondary": "#c3c4e2",
+                        "surface": "#11131b",
+                        "primary-container": "#f2b92f",
+                        "error": "#ffb4ab",
+                        "surface-bright": "#373942",
+                        "on-background": "#e1e1ed",
+                        "secondary-container": "#42455d",
+                        "surface-container-highest": "#33343d",
+                        "primary": "#ffd98d",
+                        "inverse-surface": "#e1e1ed",
+                        "surface-dim": "#11131b",
+                        "on-secondary-fixed-variant": "#42455d",
+                        "on-surface-variant": "#d3c5ad",
+                        "surface-container-high": "#282a32",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-lowest": "#0c0e15",
+                        "primary-fixed": "#ffdea0",
+                        "on-primary-fixed": "#261900",
+                        "tertiary": "#dedede",
+                        "on-tertiary-container": "#4e5050",
+                        "background": "#11131b",
+                        "inverse-primary": "#795900",
+                        "surface-tint": "#f7be34",
+                        "secondary-fixed-dim": "#c3c4e2",
+                        "surface-container-low": "#191b23",
+                        "on-surface": "#e1e1ed",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "outline": "#9c8f7a",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "on-secondary-container": "#b1b3d0",
+                        "surface-container": "#1d1f27",
+                        "tertiary-container": "#c1c2c2",
+                        "inverse-on-surface": "#2e3039",
+                        "on-secondary": "#2c2f46",
+                        "on-error": "#690005",
+                        "error-container": "#93000a",
+                        "outline-variant": "#4f4634",
+                        "on-secondary-fixed": "#171a30",
+                        "tertiary-fixed": "#e2e2e2",
+                        "on-primary": "#402d00",
+                        "on-tertiary": "#2f3131"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen pb-32">
+<aside class="hidden lg:flex lg:flex-col lg:w-64 lg:fixed lg:left-0 lg:top-0 lg:h-full z-40 bg-[#11131b] border-r border-white/5 tonal-layering">
+<div class="p-8">
+<h1 class="text-[#f7be34] font-black text-2xl tracking-tighter">DACRIBEL</h1>
+</div>
+<nav class="flex-1 px-4 space-y-2">
+<div class="flex items-center space-x-4 p-4 rounded-xl bg-[#191b23] text-[#f7be34] border-r-4 border-[#f7be34]">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+<span class="font-semibold body-md">Store</span>
+</div>
+<div class="flex items-center space-x-4 p-4 rounded-xl text-[#c3c4e2] hover:bg-[#282a32] transition-all">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-semibold body-md">Orders</span>
+</div>
+<div class="flex items-center space-x-4 p-4 rounded-xl text-[#c3c4e2] hover:bg-[#282a32] transition-all">
+<span class="material-symbols-outlined" data-icon="shield">shield</span>
+<span class="font-semibold body-md">Security</span>
+</div>
+<div class="flex items-center space-x-4 p-4 rounded-xl text-[#c3c4e2] hover:bg-[#282a32] transition-all">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-semibold body-md">Settings</span>
+</div>
+</nav>
+<div class="p-6 mt-auto">
+<div class="flex items-center space-x-3 p-3 rounded-2xl bg-surface-container-low">
+<div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center border border-primary/20">
+<span class="material-symbols-outlined text-primary-fixed-dim" data-icon="person">person</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Vault Access</p>
+<p class="text-[10px] text-secondary">Verified Member</p>
+</div>
+</div>
+</div>
+</aside>
+<header class="fixed top-0 w-full z-50 bg-surface-container-low/60 dark:bg-[#11131b]/60 backdrop-blur-[12px] shadow-[0_20px_50px_rgba(0,0,0,0.3)] lg:pl-64">
+<div class="flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-4">
+<button class="lg:hidden text-[#f7be34]">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<span class="text-xl font-black text-[#f7be34] tracking-tighter">DACRIBEL</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative text-[#c3c4e2] hover:opacity-80 transition-opacity cursor-pointer">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-primary rounded-full"></span>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-high px-3 py-1.5 rounded-full border border-white/5">
+<div class="w-7 h-7 rounded-full bg-gradient-to-tr from-primary to-primary-container overflow-hidden">
+<img alt="User Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8cBfjZhhzQzpkZcgbPpV-tfWj3wuDBwMWwgx1nUvf7ZrARA7Q6CW5IPZE8ml9HMvPzZGo75mnbA5JBbUf6oPIwzpg3weQ58y_N82VStN_50SGkwor6KpnR2NKr72URg24G8GK3pkjN1q26QbvkDdLSc3f4WeKd4oX0Rl9lI0u2HXRfm1cOua7Oi30jk0c2Jrlf1brxl-2pD8oFeOzEN8WybutrvwSY88anhq0D61LHy2xG3HZTPFON5XdJIcSoSIyj4TXXeK31xi4"/>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-24 px-6 max-w-7xl mx-auto lg:ml-64 lg:px-12">
+<section class="relative group rounded-[2.5rem] overflow-hidden aspect-[4/5] md:aspect-[21/9] mb-8 bg-surface-container-low shadow-2xl">
+<div class="absolute inset-0 flex transition-transform duration-500 ease-out">
+<!-- Slide 1: PlayStation -->
+<div class="min-w-full h-full relative">
+<img alt="PlayStation Promotion" class="w-full h-full object-cover opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZ9liCz5w08cybR5VFCYdsmkm9JzkJUMJW1EQRIQWgdgZQE9rpmPCVShtR__Lv9zaXFoV59iqITc08grjo7SDAbhy-ILjXbnYWs5O8b4d5b53gQZXqyRUKXbTE6PXJP4vW3lEFY5MXr--_YjNQoO4XuPwEGAxtidG9AWRP5cfYx8cuNTGspKN0UbDH-k2V1cjB19zCWzxmTvWRwXUJ14VDupeGeOyvJT8ICiZiNoEB2LEeoXwfI8g6ArL29WsJ-mexqBxJEp7u9lmb"/>
+<div class="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent flex flex-col justify-center px-8 md:px-16">
+<span class="text-primary-fixed-dim font-bold tracking-[0.2em] text-[10px] uppercase mb-3">Featured Offer</span>
+<h2 class="text-4xl md:text-6xl font-black text-on-surface mb-6 leading-tight">UNLEASH THE <br/><span class="text-primary">POWER OF PLAY</span></h2>
+<p class="text-secondary max-w-sm mb-8 text-sm md:text-base">Top up your PlayStation wallet instantly. Access thousands of titles today.</p>
+<button class="w-fit bg-gradient-to-b from-primary to-primary-container text-on-primary-fixed font-bold px-10 py-4 rounded-2xl hover:scale-105 transition-transform shadow-[0_15px_35px_rgba(242,185,47,0.3)]">
+                            Get Credits
+                        </button>
+</div>
+</div>
+</div>
+<!-- Carousel Controls -->
+<button class="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/5 backdrop-blur-md flex items-center justify-center text-on-surface hover:bg-white/10 transition-colors border border-white/10">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/5 backdrop-blur-md flex items-center justify-center text-on-surface hover:bg-white/10 transition-colors border border-white/10">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+<!-- Navigation Dots -->
+<div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3">
+<span class="w-10 h-2 bg-primary rounded-full shadow-[0_0_10px_rgba(247,190,52,0.5)]"></span>
+<span class="w-2 h-2 bg-white/20 rounded-full hover:bg-white/40 cursor-pointer transition-colors"></span>
+<span class="w-2 h-2 bg-white/20 rounded-full hover:bg-white/40 cursor-pointer transition-colors"></span>
+</div>
+</section>
+<section class="mb-8 max-w-2xl mx-auto">
+<div class="relative group">
+<div class="absolute inset-y-0 left-5 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-secondary/60 group-focus-within:text-primary transition-colors" data-icon="search">search</span>
+</div>
+<input class="w-full bg-surface-container-high border-none outline-none ring-1 ring-white/5 focus:ring-primary/40 rounded-full py-5 pl-14 pr-6 text-on-surface placeholder:text-secondary/40 transition-all backdrop-blur-md shadow-inner" placeholder="Search gift cards, games, subscriptions..." type="text"/>
+</div>
+</section>
+<!-- Filters Section -->
+<section class="mb-12">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="filter_list">filter_list</span>
+<h4 class="text-xs font-bold uppercase tracking-widest text-secondary">Filtros Avanzados</h4>
+</div>
+<div class="flex flex-col md:flex-row gap-6">
+<!-- Platform Filter -->
+<div class="flex-1 space-y-2">
+<label class="text-[10px] font-bold text-secondary/60 uppercase ml-2">Plataforma</label>
+<div class="flex gap-2 overflow-x-auto no-scrollbar pb-2">
+<button class="flex-shrink-0 px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-on-surface text-sm hover:border-primary/50 transition-all backdrop-blur-sm">All</button>
+<button class="flex-shrink-0 px-5 py-2.5 rounded-full bg-[#f2b92f] text-on-primary-fixed font-bold text-sm shadow-lg shadow-primary/20">PlayStation</button>
+<button class="flex-shrink-0 px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-on-surface text-sm hover:border-primary/50 transition-all backdrop-blur-sm">Xbox</button>
+<button class="flex-shrink-0 px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-on-surface text-sm hover:border-primary/50 transition-all backdrop-blur-sm">Nintendo</button>
+<button class="flex-shrink-0 px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-on-surface text-sm hover:border-primary/50 transition-all backdrop-blur-sm">Roblox</button>
+</div>
+</div>
+<!-- Denomination Filter -->
+<div class="flex-1 space-y-2">
+<label class="text-[10px] font-bold text-secondary/60 uppercase ml-2">Denominación</label>
+<div class="flex gap-2 overflow-x-auto no-scrollbar pb-2">
+<button class="flex-shrink-0 px-6 py-2.5 rounded-full bg-white/5 border border-white/10 text-on-surface font-bold text-sm hover:border-primary/50 transition-all backdrop-blur-sm">$5</button>
+<button class="flex-shrink-0 px-6 py-2.5 rounded-full bg-[#f2b92f] text-on-primary-fixed font-bold text-sm shadow-lg shadow-primary/20">$10</button>
+<button class="flex-shrink-0 px-6 py-2.5 rounded-full bg-white/5 border border-white/10 text-on-surface font-bold text-sm hover:border-primary/50 transition-all backdrop-blur-sm">$50</button>
+<button class="flex-shrink-0 px-6 py-2.5 rounded-full bg-white/5 border border-white/10 text-on-surface font-bold text-sm hover:border-primary/50 transition-all backdrop-blur-sm">$100</button>
+</div>
+</div>
+<!-- Region Filter -->
+<div class="flex-1 space-y-2">
+<label class="text-[10px] font-bold text-secondary/60 uppercase ml-2">Región</label>
+<div class="flex gap-2 overflow-x-auto no-scrollbar pb-2">
+<button class="flex-shrink-0 flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#f2b92f] text-on-primary-fixed font-bold text-sm shadow-lg shadow-primary/20">
+<span class="text-lg">🇺🇸</span> USA
+                        </button>
+<button class="flex-shrink-0 flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-on-surface text-sm hover:border-primary/50 transition-all backdrop-blur-sm">
+<span class="text-lg">🇨🇴</span> Colombia
+                        </button>
+<button class="flex-shrink-0 flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-on-surface text-sm hover:border-primary/50 transition-all backdrop-blur-sm">
+<span class="text-lg">🇲🇽</span> México
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Search Results Section -->
+<section class="mb-12">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-xl font-bold text-on-surface">Resultados de Búsqueda</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="bg-[#30334a] p-6 rounded-[2rem] border border-white/5 hover:border-primary/40 transition-all group">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-14 h-14 bg-surface-container-high rounded-2xl flex items-center justify-center p-2">
+<img alt="PSN Gift Card" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiTxVt6ySeAnfCpLGKdS27Vppb3aajRDHAEAo6CoHcv1AC4n-Fy8WSv-omjSNGOpnr6z_-CqDr_DD6VYi4sksRmxVxo017NrFnfooq2xYG6mH5hZ9MqJyf6rJFhcVNEMm3YKbdw3i1NfCYgk04aCwwxWtJxhxfluWKXUwF0R3hhpIcgo3SjRM8pv0X6-NfdkauNFzWtWjnMMPz8uyOI9GIqKFSwGhXzljl83sTj0T6xV_p9TwnpX9hycsfOAHp5Pii_-iw7_tpxLMs"/>
+</div>
+<div>
+<h4 class="font-bold text-lg text-on-surface">PlayStation Store Gift Card (USA)</h4>
+<p class="text-secondary text-xs">Denominación: $10.00</p>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-xs font-bold text-primary-fixed-dim uppercase tracking-tighter">Precio</span>
+<span class="text-2xl font-black text-on-surface">$9.3 USDT</span>
+</div>
+<button class="bg-primary/10 text-primary p-4 rounded-2xl group-hover:bg-[#f2b92f] group-hover:text-on-primary-fixed transition-colors shadow-lg shadow-black/20">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Category Section (Modified to 3-column grid) -->
+<section class="mb-12">
+<div class="flex flex-col items-center mb-10">
+<span class="text-secondary/60 text-[10px] font-bold tracking-[0.3em] uppercase mb-1">Vault Collections</span>
+<h3 class="text-2xl font-black text-on-surface tracking-tight">Tarjetas de Regalo</h3>
+</div>
+<div class="grid grid-cols-3 gap-6 md:gap-12 max-w-3xl mx-auto">
+<div class="flex flex-col items-center group cursor-pointer">
+<div class="w-20 h-20 md:w-32 md:h-32 rounded-full bg-surface-container-low flex items-center justify-center mb-4 ring-1 ring-white/5 group-hover:ring-primary/50 transition-all group-hover:shadow-[0_0_30px_rgba(247,190,52,0.15)] overflow-hidden">
+<img alt="PSN" class="w-full h-full object-cover group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiTxVt6ySeAnfCpLGKdS27Vppb3aajRDHAEAo6CoHcv1AC4n-Fy8WSv-omjSNGOpnr6z_-CqDr_DD6VYi4sksRmxVxo017NrFnfooq2xYG6mH5hZ9MqJyf6rJFhcVNEMm3YKbdw3i1NfCYgk04aCwwxWtJxhxfluWKXUwF0R3hhpIcgo3SjRM8pv0X6-NfdkauNFzWtWjnMMPz8uyOI9GIqKFSwGhXzljl83sTj0T6xV_p9TwnpX9hycsfOAHp5Pii_-iw7_tpxLMs"/>
+</div>
+<span class="text-on-surface font-bold text-[10px] md:text-sm tracking-wide group-hover:text-primary transition-colors text-center">PSN</span>
+</div>
+<div class="flex flex-col items-center group cursor-pointer">
+<div class="w-20 h-20 md:w-32 md:h-32 rounded-full bg-surface-container-low flex items-center justify-center mb-4 ring-1 ring-white/5 group-hover:ring-primary/50 transition-all group-hover:shadow-[0_0_30px_rgba(247,190,52,0.15)] overflow-hidden">
+<img alt="Xbox" class="w-full h-full object-cover group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtGwrArEDEuWWCZT2hTrBXTewRkBrl1d62pUxTA7jvm6CafMelj1YXfljeODZpzcydjozr8KOHB9PfQ54juwSH7dQxe_q_oFbkZu1AMotCxMSksV90boaoMzkvs6nTD1Tc7-8WP0tnaW5CHOarZflm8rLroVR0YPilfy4XJrMUgg-xiVwesTWZaN8Sbywtk8o4s24jTB5ONrXXKFL2oRYLxW48Q_JScRMnbtm1BQo1WLwpqr9HtI9XlSCOAt7H7fF3J7Y98yWyedqD"/>
+</div>
+<span class="text-on-surface font-bold text-[10px] md:text-sm tracking-wide group-hover:text-primary transition-colors text-center">Xbox</span>
+</div>
+<div class="flex flex-col items-center group cursor-pointer">
+<div class="w-20 h-20 md:w-32 md:h-32 rounded-full bg-surface-container-low flex items-center justify-center mb-4 ring-1 ring-white/5 group-hover:ring-primary/50 transition-all group-hover:shadow-[0_0_30px_rgba(247,190,52,0.15)] overflow-hidden">
+<img alt="Nintendo eShop" class="w-full h-full object-cover group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDs8x_b6xVP6t8lvtHdf9RXupeTnVY3mBeUVq9wOWdjFpvJQqLo4cr90ViI6B4RS3b93-0JP6YpBYMLu6JrP-06TKPuCKa3hedoGW8LZVHocR8-A1ayeZjrSDFHOHaMEa931APToz2mM8ZkKkxwZ-1tS_bhYsB74XfkyvgyJNcSxWp-106sDzDse6f8elNZcAKDDzlitVV6LYOsBf7Rmm4N4k9DYgNEkw1Y_PawlefSJCt2gF32fSPFIgbhd9SF8GgKgMuZZSXBLMJZ"/>
+</div>
+<span class="text-on-surface font-bold text-[10px] md:text-sm tracking-wide group-hover:text-primary transition-colors text-center">Nintendo</span>
+</div>
+<div class="flex flex-col items-center group cursor-pointer">
+<div class="w-20 h-20 md:w-32 md:h-32 rounded-full bg-surface-container-low flex items-center justify-center mb-4 ring-1 ring-white/5 group-hover:ring-primary/50 transition-all group-hover:shadow-[0_0_30px_rgba(247,190,52,0.15)] overflow-hidden">
+<img alt="Roblox" class="w-full h-full object-cover group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAM3FMx2vTaoNam0rubroypijS2V_7xS7T-OpkTe9PoJKooFUEG0W8BHahnEb0bI9TkE73Z22TakNKWvOmMgh9WBQpY_HFXGp1Q0c96ZAjH1juEU0mPpvxZiThNAir3wqbXRYkprrPChtvOHqKN629Iqe_cvtlGWsip_okk7FiVsC0NIJaNysJxDsOIsUIwU2R-azC5uilvyW1pxWFGNzx0skUi2DdEdp7bDCiDZeJGMc7sh8a_IQn2z059ZP0S8yfP8doKK-PPp-Z9"/>
+</div>
+<span class="text-on-surface font-bold text-[10px] md:text-sm tracking-wide group-hover:text-primary transition-colors text-center">Roblox</span>
+</div>
+</div>
+</section>
+<!-- New 'Más Vendidos' Section -->
+<section class="mb-12">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-2xl font-black text-on-surface tracking-tight">Más Vendidos</h3>
+<div class="h-px flex-1 bg-white/10 mx-6"></div>
+<button class="text-[#f2b92f] text-xs font-bold uppercase tracking-widest">Ver Todos</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Product 1 -->
+<div class="glass-card p-6 rounded-[2rem] hover:border-[#f2b92f]/40 transition-all group">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-14 h-14 bg-surface-container-high rounded-2xl flex items-center justify-center p-2">
+<img alt="PSN" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiTxVt6ySeAnfCpLGKdS27Vppb3aajRDHAEAo6CoHcv1AC4n-Fy8WSv-omjSNGOpnr6z_-CqDr_DD6VYi4sksRmxVxo017NrFnfooq2xYG6mH5hZ9MqJyf6rJFhcVNEMm3YKbdw3i1NfCYgk04aCwwxWtJxhxfluWKXUwF0R3hhpIcgo3SjRM8pv0X6-NfdkauNFzWtWjnMMPz8uyOI9GIqKFSwGhXzljl83sTj0T6xV_p9TwnpX9hycsfOAHp5Pii_-iw7_tpxLMs"/>
+</div>
+<div>
+<h4 class="font-bold text-lg text-on-surface">PlayStation Store (USA)</h4>
+<p class="text-secondary text-xs">Denominación: $10.00</p>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-[#f2b92f] uppercase tracking-widest">Precio</span>
+<span class="text-2xl font-black text-on-surface">$9.3 USDT</span>
+</div>
+<button class="bg-[#f2b92f]/10 text-[#f2b92f] p-4 rounded-2xl group-hover:bg-[#f2b92f] group-hover:text-on-primary-fixed transition-all shadow-lg shadow-black/20">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</button>
+</div>
+</div>
+<!-- Product 2 -->
+<div class="glass-card p-6 rounded-[2rem] hover:border-[#f2b92f]/40 transition-all group">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-14 h-14 bg-surface-container-high rounded-2xl flex items-center justify-center p-2">
+<img alt="PSN" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiTxVt6ySeAnfCpLGKdS27Vppb3aajRDHAEAo6CoHcv1AC4n-Fy8WSv-omjSNGOpnr6z_-CqDr_DD6VYi4sksRmxVxo017NrFnfooq2xYG6mH5hZ9MqJyf6rJFhcVNEMm3YKbdw3i1NfCYgk04aCwwxWtJxhxfluWKXUwF0R3hhpIcgo3SjRM8pv0X6-NfdkauNFzWtWjnMMPz8uyOI9GIqKFSwGhXzljl83sTj0T6xV_p9TwnpX9hycsfOAHp5Pii_-iw7_tpxLMs"/>
+</div>
+<div>
+<h4 class="font-bold text-lg text-on-surface">PlayStation Store (USA)</h4>
+<p class="text-secondary text-xs">Denominación: $3.00</p>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-[#f2b92f] uppercase tracking-widest">Precio</span>
+<span class="text-2xl font-black text-on-surface">$2.8 USDT</span>
+</div>
+<button class="bg-[#f2b92f]/10 text-[#f2b92f] p-4 rounded-2xl group-hover:bg-[#f2b92f] group-hover:text-on-primary-fixed transition-all shadow-lg shadow-black/20">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</button>
+</div>
+</div>
+<!-- Product 3 -->
+<div class="glass-card p-6 rounded-[2rem] hover:border-[#f2b92f]/40 transition-all group">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-14 h-14 bg-surface-container-high rounded-2xl flex items-center justify-center p-2">
+<img alt="Nintendo" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDs8x_b6xVP6t8lvtHdf9RXupeTnVY3mBeUVq9wOWdjFpvJQqLo4cr90ViI6B4RS3b93-0JP6YpBYMLu6JrP-06TKPuCKa3hedoGW8LZVHocR8-A1ayeZjrSDFHOHaMEa931APToz2mM8ZkKkxwZ-1tS_bhYsB74XfkyvgyJNcSxWp-106sDzDse6f8elNZcAKDDzlitVV6LYOsBf7Rmm4N4k9DYgNEkw1Y_PawlefSJCt2gF32fSPFIgbhd9SF8GgKgMuZZSXBLMJZ"/>
+</div>
+<div>
+<h4 class="font-bold text-lg text-on-surface">Nintendo eShop Card</h4>
+<p class="text-secondary text-xs">Denominación: $20.00</p>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-[#f2b92f] uppercase tracking-widest">Precio</span>
+<span class="text-2xl font-black text-on-surface">$18.5 USDT</span>
+</div>
+<button class="bg-[#f2b92f]/10 text-[#f2b92f] p-4 rounded-2xl group-hover:bg-[#f2b92f] group-hover:text-on-primary-fixed transition-all shadow-lg shadow-black/20">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<section class="mb-20">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-xl font-bold text-on-surface">Trending Now</h3>
+<button class="text-primary text-xs font-bold uppercase tracking-widest">See all</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="bg-surface-container-low p-6 rounded-[2rem] border border-white/5 hover:border-primary/20 transition-all group">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-14 h-14 bg-surface-container-high rounded-2xl flex items-center justify-center p-3">
+<img alt="Steam" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGn1oe5oc8ppSrlypc9hPpZTFBTrGfzScF7z1NlurWgeZraU6zL6z0FpQBJQscIaqo56etoL-NYsJD915luy3_W5A17TpeCjmRI6oNxdEjp2UB--07cV1Ygzu0C8p8mXe0XkpPYsvUNSiAPbbrx2dbHKU9Z3_tTwjPf73lTf3-XcIlgMbKI5N3rOCCeSFDz9gNRhLjZJN5Hibk1EzAdK1lY12dZt8FUugBUaJrDOO4lY3sop68XXi2T5R_i2r5B9HY9YF_3VMXSW4j"/>
+</div>
+<div>
+<h4 class="font-bold text-lg">Steam Wallet</h4>
+<p class="text-secondary text-xs">Instant digital delivery</p>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-2xl font-black text-on-surface">$50.00</span>
+<button class="bg-surface-container-highest p-3 rounded-xl group-hover:bg-primary group-hover:text-on-primary-fixed transition-colors">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</button>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-[2rem] border border-white/5 hover:border-primary/20 transition-all group">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-14 h-14 bg-surface-container-high rounded-2xl flex items-center justify-center p-3">
+<img alt="Spotify" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpHeaRVhycqrQYbsN5qmPnXR_tuHor7e7PDMZeCXADmGplihniZ0__3ooJakd1Bw9OmJVHGU2mVkZ1fxsVmANsjFOHXF3tRLnM9lHSoBf_BumVk-6R4RTTjy5lGlNnA2kPddaB9yC15baDRLwI7EA28_t_Ucm8ytSQqSO9rmZWwi9aqQDU-c8ib_PIS28gqi89W93LOxXVNZxYscbj9K9tP7O7UkraLmMUvoq7_6p_GIJ7DgKMw0FFxloKsEaeuCe1k5l9BI-nPu5C"/>
+</div>
+<div>
+<h4 class="font-bold text-lg">Spotify Premium</h4>
+<p class="text-secondary text-xs">12 Months Subscription</p>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-2xl font-black text-on-surface">$99.00</span>
+<button class="bg-surface-container-highest p-3 rounded-xl group-hover:bg-primary group-hover:text-on-primary-fixed transition-colors">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</button>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-[2rem] border border-white/5 hover:border-primary/20 transition-all group">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-14 h-14 bg-surface-container-high rounded-2xl flex items-center justify-center p-3">
+<img alt="Razer Gold" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOVIq1bKGfyObq_bfvRuXdOiu-TrPO9QCxT_kzMc3-FLhI7i5mspOOILCdazss60hIUKzizkzv6ayaFidnIB6WU3U5_x63V-6NHmb7o4z7ur2TpbU8M3gGYsPh539OwaRv2MMxxeN8RbrEIv-P9BVb_DZeViI4ZMIjE60XT97XvtczHT6NCvPd5KI9_8rZ2MNKFgtNfPemYAlVkCPH3AHhcWzULj1Qb8hx51vApP6F1KiVE58am0-_ciGujEPJUMvtJNsZxTjvPYCA"/>
+</div>
+<div>
+<h4 class="font-bold text-lg">Razer Gold</h4>
+<p class="text-secondary text-xs">Global Recharge</p>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-2xl font-black text-on-surface">$25.00</span>
+<button class="bg-surface-container-highest p-3 rounded-xl group-hover:bg-primary group-hover:text-on-primary-fixed transition-colors">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<div class="md:hidden">
+<nav class="fixed bottom-6 left-0 right-0 flex justify-center items-center z-50 px-4">
+<div class="bg-[#191b23]/80 backdrop-blur-[12px] flex justify-around items-center w-[200px] rounded-full p-2 outline outline-1 outline-white/15 shadow-2xl">
+<a class="text-[#f7be34] bg-[#f7be34]/10 rounded-full p-3 flex flex-col items-center" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+</a>
+<a class="text-[#c3c4e2] p-3 flex flex-col items-center hover:text-[#f7be34] transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+</a>
+</div>
+</nav>
+</div>
+</body></html>
